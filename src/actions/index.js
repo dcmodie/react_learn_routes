@@ -23,3 +23,6 @@ export function fetchPosts(){
 		payload:request
 	};
 }
+
+// API
+//http://reduxblog.herokuapp.com
