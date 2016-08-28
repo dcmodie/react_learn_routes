@@ -3,6 +3,7 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {fetchPosts} from '../actions/index.js'
+import {Link} from 'react-router'
 
 class PostIndex extends Component   {
 	componentWillMount (){
@@ -16,13 +17,21 @@ class PostIndex extends Component   {
 	}
 
 	render (){
+
+
 		console.log ('in postss_index')
 		console.log (this.props.blogList)
 		return (
 			<div>
+				<div className='text-xs-right'>
+					<Link to='posts/new' className="btn btn-primary">
+					Add a Post
+					</Link>
+				</div>
 				<div>{
 					this.props.blogList.map(this.renderList)
 				}</div>
+
 			</div>
 		)
 	}
