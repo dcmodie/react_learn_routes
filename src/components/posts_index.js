@@ -9,7 +9,6 @@ class PostIndex extends Component   {
 	componentWillMount (){
 		this.props.fetchPosts();
 	}
-
 	renderList(item){
 		return (
 			<li>{item.categories}</li>
@@ -17,8 +16,6 @@ class PostIndex extends Component   {
 	}
 
 	render (){
-
-
 		console.log ('in postss_index')
 		console.log (this.props.blogList)
 		return (
