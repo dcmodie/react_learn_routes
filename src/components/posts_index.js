@@ -12,8 +12,10 @@ class PostIndex extends Component   {
 	renderList(item){
 		return (
 			<li className = "list-group-item">
-				<span className ="pull-xs-right">{item.categories}</span>
-				<strong >{item.title}</strong>
+				<Link to={"posts/" + item.id}>
+					<span className ="pull-xs-right">{item.categories}</span>
+					<strong >{item.title}</strong>
+				</Link>
 
 			</li>
 		)
