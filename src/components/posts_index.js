@@ -11,7 +11,11 @@ class PostIndex extends Component   {
 	}
 	renderList(item){
 		return (
-			<li>{item.categories}</li>
+			<li className = "list-group-item">
+				<span className ="pull-xs-right">{item.categories}</span>
+				<strong >{item.title}</strong>
+
+			</li>
 		)
 	}
 
@@ -25,9 +29,13 @@ class PostIndex extends Component   {
 					Add a Post
 					</Link>
 				</div>
-				<div>{
-					this.props.blogList.map(this.renderList)
-				}</div>
+				<div>
+					<ul className='list'>{
+
+						this.props.blogList.map(this.renderList)
+					}
+					</ul>
+				</div>
 
 			</div>
 		)
