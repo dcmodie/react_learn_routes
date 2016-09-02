@@ -5,7 +5,6 @@ import App from './components/app.js'
 import PostsNew from './components/posts_new.js'
 import PostsIndex from './components/posts_index.js'
 import PostsShow from './components/posts_show.js'
-import PostsUpdate from './components/posts_update.js'
 
 const Greeting = () => {
 	return <div> hey here</div>

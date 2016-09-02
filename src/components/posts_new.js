@@ -10,13 +10,12 @@ class PostsNew extends Component   {
 
 	constructor(props) {
 	    super(props);
-	    //this.state = {isNew:true};
 	    this.isNew = true;
   	}
 
+  	//if we need to redirect after a submit, set this up
 	static contextTypes = {
 		router: PropTypes.object
-		//bind handle onSubmit
 	}
 
 	componentWillMount(){
@@ -28,7 +27,6 @@ class PostsNew extends Component   {
 			this.isNew = false;
 		}
 		else {
-			//this.props.clearPost()
 			console.log ("reseting form")
 			this.props.clearPost(this.props.fields);
 			this.isNew = true;
@@ -50,34 +48,14 @@ class PostsNew extends Component   {
 	}
 
 	render (){
-
 		const handleSubmit = this.props.handleSubmit
 		const title = this.props.fields.title
 		const categories = this.props.fields.categories
 		const content = this.props.fields.content
-		console.log ("rendering in posts new post from fetch:")
-		console.log (this.props)
-		if (this.props.hasOwnProperty("values")){
-			console.log (this.props.values)
-
-		}
-		var categoriesVal = ""
-		var titleVal = ""
-		var contentVal = ""
 		var pageTitle = "Create a new Post"
-		if (this.isNew){
-			//this.props["initialValues"] = {};
+		if (!this.isNew){
+			pageTitle = "Edit post"
 		} ;
-		if (this.props.initialValues){
-
-			// console.log ("this.props.initialValues is true")
-			// console.log (props.initialValues)
-			// // categoriesVal = this.props.post.categories
-			// // titleVal = this.props.post.title
-			// // contentVal = this.props.post.content
-			// // pageTitle = "Edit a Post"
-			//  this.state.isNew = false;
-		}
 
 		return (
 			<form onSubmit = {handleSubmit(this.onSubmit.bind(this))} >
@@ -109,10 +87,6 @@ function mapStateToProps(state){
 		initialValues:state.posts.post
 	}
 }
-
-// function mapDispatchToProps (dispatch){
-//   return reduxForm({createPost}, dispatch)
-// }
 
 export default reduxForm ({
 	form: 'PostsNewForm',

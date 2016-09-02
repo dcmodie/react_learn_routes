@@ -56,10 +56,10 @@ export function fetchPost(id){
 }
 
 export function clearPost(fields){
-	console.log ("clearign post")
-	console.log (fields)
+	console.log ("clearing post")
+	//create an object with a key-value pair for each field, set the value of each 
+	//to an empty string
 	var retObj = {data:{}}
-	
 	for (var key in fields){
 		retObj.data[key]='';
 	}
