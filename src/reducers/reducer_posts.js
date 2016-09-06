@@ -26,13 +26,11 @@ export default function (state = INITIAL_STATE, action ){
 			return {...state, post: action.payload.data}
 			break;
 		case FILTER_PUBLICATION_TYPE:
+		console.log ("in reducer FILTER_PUBLICATION_TYPE")
 			//return { ...state, visibilityFilter: action.filter }
 			return {...state, filterPublicationType: action.payload}
 			break;
 		case FILTER_LIFECYCLE:
-
-//dcm here need add the array to state
-// figure out wich one to change, then change it
 			break
 		default:
 			return state;

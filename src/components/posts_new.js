@@ -81,7 +81,7 @@ class PostsNew extends Component   {
 }
 
 function mapStateToProps(state){
-	console.log ("in mapStateToProps")
+	console.log ("in mapStateToProps in posts new")
 	console.log (state)
 	return {
 		initialValues:state.posts.post

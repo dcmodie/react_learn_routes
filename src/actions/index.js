@@ -9,7 +9,9 @@ export const FILTER_PUBLICATION_TYPE = 'FILTER_PUBLICATION_TYPE'
 
 const ROOT_URL = 'http://reduxblog.herokuapp.com/api'
 const API_KEY = '?key=123lhasdglkjhasdfkljhasfklhswkjh'
-export function fetchPosts(){
+export function fetchPosts(filterObject){
+	console.log ("in fetchPosts, filterObject")
+	console.log(filterObject)
 
 	var url = `${ROOT_URL}/posts/${API_KEY}`
 	const request = axios.get(`${ROOT_URL}/posts${API_KEY}`)

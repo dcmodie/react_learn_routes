@@ -5,6 +5,8 @@ import {bindActionCreators} from 'redux';
 import {testRoutingWithFilters} from '../actions/index.js'
 import {FILTER_PUBLICATION_TYPE }from '../actions/index.js'
 import {FILTER_LIFECYCLE }from '../actions/index.js'
+import {Link} from 'react-router'
+import {fetchPosts} from '../actions/index.js'
 
 class FilterPublicationType extends Component   {
 
@@ -14,24 +16,34 @@ class FilterPublicationType extends Component   {
 
 	}
 
-	//if we need to redirect after a submit, set this up
-	static contextTypes = {
-		router: PropTypes.object
+	componentWillMount (){
+		console.log ("calling component will mount")
+		//call route
 	}
 
-	componentWillMount (){
-		//this.props.fetchPosts();
-		console.log ("calling component will mount")
+	componentWillReceiveProps (nextProps){
+		console.log ("calling componentWillReceiveProps in FilterPublicationType")
+		// call fetch
+		console.log(nextProps)
+		console.log(this.props)
+
+		var filters = {
+			filterLifeCycle: nextProps["filterLifeCycle"],
+			filterPublicationType: nextProps.filterPublicationType
+		}
+		// now we can update the index, and pass filters
+		this.props.fetchPosts(filters);
 	}
 
 	testFilterRoutingHandler(evt){
 		console.log ("testFilterRoutingHandler called")
-		console.log ("0")
-		var filterObject = {type:FILTER_PUBLICATION_TYPE, payload:"news"}
-		// call the action
+		console.log (this.context)
 		console.log ("1")
+		var filterObject = {type:FILTER_PUBLICATION_TYPE, payload:"news"}
+		//call the action to update the state
 		this.props.testRoutingWithFilters(filterObject)
 	}
+
 	render (){
 		console.log ('in render of FilterPublicationType')
 		return (
@@ -46,22 +58,15 @@ class FilterPublicationType extends Component   {
 
 function mapStateToProps(state){
 	console.log ("state in FilterPublicationType.mapStateToProps")
-	console.log ("2")
 	console.log (state)
-
-	var filterLifeCycle = state.posts.filterLifeCycle
-	var filterPublicationType = state.posts.filterPublicationType
-
-	// call the route
-	this.context.router.push('foo/filterLifeCycle='+filterLifeCycle+'/filterPublicationType='+filterPublicationType)
 	return{
-	 // filterLifeCycle: state.posts.filterLifeCycle,
-	 // filterPublicationType: state.posts.filterPublicationType
+	  filterLifeCycle: state.posts.filterLifeCycle,
+	  filterPublicationType: state.posts.filterPublicationType
 	}
 }
 
 function mapDispatchToProps (dispatch){
-  return bindActionCreators({testRoutingWithFilters}, dispatch)
+  return bindActionCreators({testRoutingWithFilters, fetchPosts}, dispatch)
 }
 
 export default connect( mapStateToProps, mapDispatchToProps)(FilterPublicationType)

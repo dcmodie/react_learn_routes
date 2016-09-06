@@ -17,12 +17,16 @@ export default (
 	<Route path="/" component={App} >
 		<IndexRoute component={PostsIndex} />
 		<Route path="posts/new" component={PostsNew}/>
-		<Route path="posts/:id" component={PostsNew}/>
-		<Route path="foo/*" component={Greeting2}/>
+ 		<Route path="posts/:id" component={PostsNew}/>
+ 		<Route path="posts/new" component={PostsNew}/>
+ 		<Route path="posts/:id" component={PostsNew}/>
+
 		<Route path="greet" component={Greeting}/>
 		<Route path="greet1" component={Greeting}/>
 		<Route path="greet2" component={Greeting}/>
 	</Route>
 )
 // that id will be seen as 
-//this.props.params.id
+// //this.props.params.id
+// 	<Route path="posts/new" component={PostsNew}/>
+// 		<Route path="posts/:id" component={PostsNew}/>

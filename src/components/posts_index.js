@@ -17,8 +17,10 @@ class PostIndex extends Component   {
 	
 	}
 	componentWillMount (){
+		console.log ("params in componentWillMount of PostIndex ")
 		this.props.fetchPosts();
 	}
+
 	renderList(item){
 		return (
 			<li className = "list-group-item">
@@ -33,7 +35,7 @@ class PostIndex extends Component   {
 
 	render (){
 		console.log ('in render in PostIndex')
-		console.log (this.props.blogList)
+		//console.log (this.props.blogList)
 		return (
 			<div>
 				<div className='text-xs-right'>
@@ -44,7 +46,6 @@ class PostIndex extends Component   {
 				<FilterPublicationType />
 				<div>
 					<ul className='list'>{
-
 						this.props.blogList.map(this.renderList)
 					}
 					</ul>
