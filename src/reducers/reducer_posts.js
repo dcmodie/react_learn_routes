@@ -1,7 +1,15 @@
-const INITIAL_STATE = {all:[], post:null};
+const INITIAL_STATE = {
+	all:[], 
+	post:null, 
+	filterPublicationType:"all", 
+	filterLifeCycle:"all"
+};
+
 import {FETCH_POSTS} from '../actions/index'
 import {FETCH_POST} from '../actions/index'
 import {CLEAR_POST} from '../actions/index'
+import {FILTER_PUBLICATION_TYPE} from '../actions/index'
+import {FILTER_LIFECYCLE} from '../actions/index'
 
 
 export default function (state = INITIAL_STATE, action ){
@@ -17,6 +25,15 @@ export default function (state = INITIAL_STATE, action ){
 			console.log (action.payload.data)
 			return {...state, post: action.payload.data}
 			break;
+		case FILTER_PUBLICATION_TYPE:
+			//return { ...state, visibilityFilter: action.filter }
+			return {...state, filterPublicationType: action.payload}
+			break;
+		case FILTER_LIFECYCLE:
+
+//dcm here need add the array to state
+// figure out wich one to change, then change it
+			break
 		default:
 			return state;
 	}

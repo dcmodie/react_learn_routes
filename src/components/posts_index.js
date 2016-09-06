@@ -3,9 +3,19 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {fetchPosts} from '../actions/index.js'
+import {testRoutingWithFilters} from '../actions/index.js'
 import {Link} from 'react-router'
+import DropzoneDemo from './dropzone_demo.js'
+import {FILTER_PUBLICATION_TYPE }from '../actions/index.js'
+import {FILTER_LIFECYCLE }from '../actions/index.js'
+import FilterPublicationType from './filter_publication_type.js'
 
 class PostIndex extends Component   {
+
+	constructor(props){
+		super(props);
+	
+	}
 	componentWillMount (){
 		this.props.fetchPosts();
 	}
@@ -22,7 +32,7 @@ class PostIndex extends Component   {
 	}
 
 	render (){
-		console.log ('in postss_index')
+		console.log ('in render in PostIndex')
 		console.log (this.props.blogList)
 		return (
 			<div>
@@ -31,6 +41,7 @@ class PostIndex extends Component   {
 					Add a Post
 					</Link>
 				</div>
+				<FilterPublicationType />
 				<div>
 					<ul className='list'>{
 
@@ -38,14 +49,16 @@ class PostIndex extends Component   {
 					}
 					</ul>
 				</div>
-
+				<div>
+					<DropzoneDemo />
+				</div>
 			</div>
 		)
 	}
 }
 
 function mapStateToProps(state){
-	console.log ("state")
+	console.log ("state in postsIndex.mapStateToProps")
 	console.log (state)
 	return{
 	 blogList: state.posts.all

@@ -4,6 +4,8 @@ export const FETCH_POST= 'FETCH_POST'
 export const FETCH_POSTS= 'FETCH_POSTS'
 export const CREATE_POST= 'CREATE_POST'
 export const CLEAR_POST= 'CLEAR_POST'
+export const FILTER_LIFECYCLE = 'FILTER_LIFECYCLE'
+export const FILTER_PUBLICATION_TYPE = 'FILTER_PUBLICATION_TYPE'
 
 const ROOT_URL = 'http://reduxblog.herokuapp.com/api'
 const API_KEY = '?key=123lhasdglkjhasdfkljhasfklhswkjh'
@@ -53,6 +55,13 @@ export function fetchPost(id){
 		type: FETCH_POST,
 		payload: request
 	}
+}
+
+export function testRoutingWithFilters(filterObject){
+
+	// console.log("testRoutingWithFilters")
+	// console.log(filterObject)
+	return filterObject;
 }
 
 export function clearPost(fields){
